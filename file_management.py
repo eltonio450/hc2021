@@ -30,15 +30,16 @@ def read_file(filepath):
         firstline = filecontent.readline()
         duration, nb_intersections, nb_streets, nb_cars, bonus_point = list(map(int, firstline.strip().split(' ')))
         
-        index_street = 0
+        accu_street = 0
         twowaydict_indexstreet_streetname = TwoWayDict()
         list_streets = []
         for _ in range(nb_streets):
             line = filecontent.readline()
             begin_intersection, end_intersection, street_name, length = line.strip().split(' ')
             if street_name not in twowaydict_indexstreet_streetname:
-                twowaydict_indexstreet_streetname[street_name] = index_street
-                index_street += 1
+                twowaydict_indexstreet_streetname[street_name] = accu_street
+                accu_street += 1
+            index_street = twowaydict_indexstreet_streetname[street_name]
             begin_intersection, end_intersection, length = list(map(int, [begin_intersection, end_intersection, length]))
             list_streets.append([begin_intersection, end_intersection, index_street, length])
         list_cars = []
