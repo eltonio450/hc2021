@@ -35,7 +35,7 @@ def read_file(filepath):
         list_cars = []
         for _ in range(nb_cars):
             line = filecontent.readline()
-            nb_streets_to_drive, *list_streets = line.strip().split(' ')
-            list_streets_id = [twowaydict_indexstreet_streetname[street] for street in list_streets]
+            nb_streets_to_drive, *list_streets_for_car = line.strip().split(' ')
+            list_streets_id = [twowaydict_indexstreet_streetname[street] for street in list_streets_for_car]
             list_cars.append(list_streets_id)
     return (duration, nb_intersections, nb_streets, nb_cars, bonus_point, twowaydict_indexstreet_streetname, list_streets, list_cars)
