@@ -41,19 +41,22 @@ for letter in files_list:
 
     #boucle sur les inters qui calcule le ratio de chaque rue
     for i in range(nb_intersections):
-        rues = list(inter[i].keys())
-        times =[inter[i][r] for r in rues]
-        tot = sum(times)
+        incoming_streets = list(inter[i].keys())
+        n_incoming_cars = [inter[i][street] for street in incoming_streets]
+        
+        total_cars = sum(n_incoming_cars)
+
+
 
         # min_visit
-        for street in rues:
-            if inter[i][street] ==0 and (tot==0):
+        for street in incoming_streets:
+            if inter[i][street] == 0 and (total_cars==0):
                 t=1
                 out[i][street] = t
                 
             else:
-                if inter[i][street] !=0:
-                    t = int(4*inter[i][street] / (tot +0.1)) +1
+                if inter[i][street] != 0:
+                    t = int(4*inter[i][street] / (total_cars +0.1)) +1
                     out[i][street] = t
             
 
