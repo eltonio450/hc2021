@@ -1,3 +1,12 @@
+from collections import defaultdict
+
+def create_dict_streets_by_intersection(list_streets):
+    dict_streets_by_intersection = defaultdict(lambda: dict(list_streetid_before=[], list_streetid_after=[]))
+    for begin_intersection, end_intersection, index_street, length in list_streets:
+        dict_streets_by_intersection[begin_intersection]["list_streetid_after"].append(index_street)
+        dict_streets_by_intersection[end_intersection]["list_streetid_before"].append(index_street)
+    return dict_streets_by_intersection
+
 class TwoWayDict(dict):
     def __setitem__(self, key, value):
         # Remove any previous connections with these values
