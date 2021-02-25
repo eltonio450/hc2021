@@ -26,6 +26,14 @@ class Intersection :
         self.allowedStreet = incomingStreet
 
 
+## intersections in a dictionary of intersections
+# green light is a representation of the green lights
 class Model:
     def __init__(self, duration, intersections, streets, cars):
         self.duration = duration
+        self.intersections = intersections # dictionary of intersections
+        self.streets = streets
+        self.cars = cars
+
+    def step(self, greenLights):
+            # turn green 
