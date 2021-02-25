@@ -2,7 +2,7 @@ from file_management import *
 import numpy as np
 
 
-f = read_file('input/b.txt')
+f = read_file('input/c.txt')
 # f = read_file('input/b.txt')
 
 duration, nb_intersections, nb_streets, nb_cars, bonus_point, S, list_streets, list_cars = f
@@ -44,17 +44,22 @@ for i in range(nb_intersections):
     tot = sum(times)
     print(inter[i])
     print(times)
+    # min_visit
     for street in rues:
-        if inter[i][street] ==0:
-            t=0
+        if inter[i][street] ==0 and (tot==0):
+            t=1
+            out[i][street] = t
+            
         else:
-            t = int(10*inter[i][street] / (tot +0.1)) +1
-        out[i][street] = t
+            if inter[i][street] !=0:
+                t = int(4*inter[i][street] / (tot +0.1)) +1
+                out[i][street] = t
         
+
         print(street,t)
 
 
-write_output(out,'b_frac.txt')
+write_output(out,'c_frac.txt')
 
 
 
