@@ -15,12 +15,11 @@ print(f)
 # nb visit de chaque street
 nb_visit = [0]*nb_streets
 for car in list_cars:
-    print('hey')
     for street in car:
         nb_visit[street] += 1
 
 inter = []
-
+# initialisation
 for i in range(nb_intersections):
     inter.append(dict())
 
@@ -41,7 +40,11 @@ for i in range(nb_intersections):
     print(inter[i])
     print(times)
     for street in rues:
-        t = int(3*inter[i][street] / (tot +0.1)) +1
+        if inter[i][street] ==0:
+            t=0
+        else:
+            t = int(5*inter[i][street] / (tot +0.1)) +1
+        
         print(street,t)
 
 
