@@ -2,8 +2,8 @@ from file_management import *
 import numpy as np
 
 
-# f = read_file('input/a.txt')
 f = read_file('input/b.txt')
+# f = read_file('input/b.txt')
 
 duration, nb_intersections, nb_streets, nb_cars, bonus_point, S, list_streets, list_cars = f
 
@@ -32,6 +32,11 @@ for i in range(nb_streets):
 
 print(inter)
 
+out = dict()
+# initialisation
+for i in range(nb_intersections):
+    out[i] =dict()
+
 #boucle sur les inters qui calcule le ratio de chaque rue
 for i in range(nb_intersections):
     rues = list(inter[i].keys())
@@ -43,9 +48,13 @@ for i in range(nb_intersections):
         if inter[i][street] ==0:
             t=0
         else:
-            t = int(5*inter[i][street] / (tot +0.1)) +1
+            t = int(10*inter[i][street] / (tot +0.1)) +1
+        out[i][street] = t
         
         print(street,t)
+
+
+write_output(out,'b_frac.txt')
 
 
 
