@@ -10,7 +10,7 @@ class Street:
         self.cars = cars
         self.length = length
 
-    def removeCar():
+    def removeCar(self):
         if(len(self.cars) >0):
             self.cars = self.cars[1:]
         self.cars = []
@@ -27,4 +27,5 @@ class Intersection :
 
 
 class Model:
-    def __init__
+    def __init__(self, duration, intersections, streets, cars):
+        self.duration = duration
