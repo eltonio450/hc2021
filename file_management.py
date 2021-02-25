@@ -49,3 +49,14 @@ def read_file(filepath):
             list_streets_id = [twowaydict_indexstreet_streetname[street] for street in list_streets_for_car]
             list_cars.append(list_streets_id)
     return (duration, nb_intersections, nb_streets, nb_cars, bonus_point, twowaydict_indexstreet_streetname, list_streets, list_cars)
+
+def write_output(dict_dict_time_by_street_by_intersectionid, filepath):
+    with open(filepath, 'w') as output:
+        firstline = f"{len(dict_dict_time_by_street_by_intersectionid)}\n"
+        output.write(firstline)
+        for intersection in dict_dict_time_by_street_by_intersectionid:
+            output.write(f"{intersection}\n")
+            nb_streets = len(dict_dict_time_by_street_by_intersectionid[intersection])
+            output.write(f"{nb_streets}\n")
+            for streetname, value in dict_dict_time_by_street_by_intersectionid[intersection].items():
+                output.write(f"{streetname} {value}\n")
